@@ -80,6 +80,60 @@ The report is structured around **four main pages**, each providing a specific p
 - **Heatmaps:** Visualize average scores across multiple crossed factors
 
 ---
+##  Data Preparation and Modeling
+
+Several transformations and modeling steps were applied to prepare the dataset for analysis in Power BI.
+
+---
+
+###  1. Creation of New Columns
+
+To improve readability and enable grouped analysis, several additional columns were created:
+
+- **Categorized variables**  
+  (e.g., grouped parental education levels for simplified comparisons)
+
+- **Grouped performance indicators**  
+  helping compare student performance across different demographic and contextual factors
+
+- **Text-standardized columns**  
+  ensuring consistency across all textual fields in the dataset
+
+---
+
+###  2. Creation of DAX Measures
+
+Multiple DAX measures were created to compute key metrics used throughout the report:
+
+- **Average Math Score**  
+- **Average Reading Score**  
+- **Average Writing Score**  
+- **Overall Average Score**  
+- **Total Students**  
+- **Pass Rate**
+
+These measures support dynamic and accurate calculations across all report pages and enable interactive filtering in Power BI.
+
+---
+
+###  3. Definition of Pass/Fail Criteria
+
+For the purpose of this analysis:
+
+- A student is considered **Pass** if the **Overall Average Score ≥ 60**  
+- A student is considered **Fail** if the **Overall Average Score < 60**
+
+This threshold allowed the creation of clear performance categories and made it possible to compute the pass rate across different groups such as:
+
+- gender  
+- race/ethnicity  
+- lunch status  
+- test preparation course  
+- parental education level  
+- and other demographic factors
+
+---
+
 
 ## Justification for Slicer Placement and Synchronization
 - Slicers placed on **Page 2** to avoid clutter  
