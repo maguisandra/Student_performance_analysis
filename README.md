@@ -1,110 +1,54 @@
-# Student_performance_analysis
-Analysis of students’ performance across subjects with detailed dashboards and factor analysis.
-# Analysis of Student Academic Performance Report
+# Student Performance Analysis
 
-## General Description of the Report
-This report, created using **Power BI Desktop** and based on the **Students_Academic_Performance_Dataset (CSV)** from Kaggle, provides a comprehensive study of student performance according to several factors: **gender, race, participation in a test preparation course, lunch program, and parental education level**.  
-The report is structured around **four main pages**, each providing a specific perspective on the data.
+**Analysis of students’ performance across subjects with detailed factor analysis.**
 
 ---
 
-## Report Structure
+## General Description
 
-- **Page 1 – Basic Student Characteristics**  
-  Provides an overview of the total number of students and the distribution by **gender, race, parental education level, lunch program, and test preparation course**.  
-  **Visualizations:** KPI, bar charts, P-charts, Donut charts
-  **Objective:** Describe general student population characteristics.
+This project, built using **Power BI Desktop**, analyzes student performance based on multiple factors: **gender, race, test preparation course, lunch program, and parental education level**.  
+The dataset used is the **Students_Academic_Performance_Dataset (CSV)** from Kaggle.
 
-- **Page 2 – Student Performance Overview**  
-  Focuses on analyzing **average scores and pass rates**, comparing results by gender, race, test preparation, lunch program, and parental education.  
-  **Visualizations:** bar charts, column charts, stacked charts, performance KPIs  
-  **Objective:** Highlight variations in performance according to different factors.
-
-- **Page 3 – Factors Influencing Performance**  
-  Analyzes the impact of certain factors on scores: test preparation, parental education, and gender.  
-  **Visualizations:** scatter plots, box plots  
-  **Objective:** Identify factors that truly influence student scores.
-
-- **Page 4 – Students’ Scores by Subjects**  
-  Detailed analysis of scores by subject (Reading, Math, Writing).  
-  **Visualizations:** KPIs by subject, heatmaps (Math/Reading/Writing × Race × Parental Education), column charts by gender and test preparation  
-  **Objective:** Examine score distributions and compare performance by category.
+The report aims to provide insights on **average performance, pass rates, and factor influences**.
 
 ---
 
-## Navigation and Filters
-- **Main slicers:** Gender, Race, Test Preparation, Lunch  
-- **Placement:** Slicers are on Page 2 and **synchronized on Pages 3 and 4** to ensure data consistency.  
-- **Behavior:** Filters automatically apply across all pages, allowing consistent exploration of subgroups.
+## Key Insights
+
+### 1. Impact of Test Preparation
+- Students who **completed the test preparation course** perform significantly better than those who did not.  
+- **Average score improvement:** +8 points.  
+- **Minimum score** is higher for prepared students → fewer severe failures.  
+- **Quartiles (Q1, Q3)** are higher → both weaker and stronger students benefit.  
+- Non-prepared students have:
+  - More severe failures  
+  - Greater score dispersion  
+  - Lower median scores  
+
+**Conclusion:** Test preparation provides a **real and measurable advantage**, improving average performance and stability.
+
+### 2. Effect of Parental Education Level
+- **High education level parents** → students achieve the best scores.  
+- **Low education level parents** → students have lower scores and less variability.  
+- **Median education level parents** → students perform between the two groups.  
+
+**Conclusion:** Parental education is positively correlated with student performance. High parental education → higher average scores.
+
+### 3. Performance Observations by Subject and Group
+- Certain student groups perform better in **specific subjects** regardless of parental education.  
+- Family practices and community dynamics can influence performance, sometimes counterbalancing lower parental education.  
+- Prepared students show **more stable results** with fewer very low scores.
 
 ---
 
-## Key Points and Conclusions
-- Students with parents of **high education level** tend to achieve the best scores.  
-- **Test Preparation Courses** significantly improve results.  
-- **Gender** shows differences in certain subjects, but less pronounced than parental education or test preparation.  
-- **Lunch Program** and certain characteristics (e.g., race) are more **descriptive** than causal.  
-- Visualizations (KPI, box plots, heatmaps, scatter plots) help understand **both average performance and score distributions**.
+## Data Preparation and Modeling
 
----
+### 1. Creation of New Columns
+- **Categorized variables** (e.g., parental education levels grouped for comparisons)  
+- **Grouped performance indicators** for cross-factor analysis  
+- **Text-standardized columns** for consistency
 
-## Instructions for Use
-1. Start with **Page 1** to explore general student characteristics.  
-2. Use the **slicers on Page 2** to filter by Gender, Race, Test Preparation, or Lunch.  
-3. Navigate to **Page 3** to examine factors influencing scores.  
-4. Check **Page 4** for a detailed analysis of scores by subject and Race × Parental Education.
-
----
-
-## Technical Information
-- **Software:** Power BI Desktop  
-- **Dataset:** Students_Academic_Performance_Dataset (CSV) from Kaggle  
-- **Version:** Slicer synchronization enabled; KPIs and visualizations optimized for clarity and consistency  
-
----
-
-## Choice of Pages and Visualizations
-- **Page 1:** Overview of student population; simple visualizations to identify main trends  
-- **Page 2:** Compare overall performance by category; detect score differences quickly  
-- **Page 3:** Focus on factors influencing scores; use box plots and scatter plots for distribution and correlation  
-- **Page 4:** Detailed scores by subject; heatmaps for Race × Parental Education; column charts for gender and test preparation comparison
-
----
-
-## Explanation of Visualization Choices
-- **KPI:** Concise, immediately readable key indicators  
-- **Bar / Column charts:** Compare categories easily  
-- **Stacked charts:** Show composition of results  
-- **Box plots:** Show median, quartiles, range, and outliers  
-- **Scatter plots:** Detect correlations between quantitative variables  
-- **Heatmaps:** Visualize average scores across multiple crossed factors
-
----
-##  Data Preparation and Modeling
-
-Several transformations and modeling steps were applied to prepare the dataset for analysis in Power BI.
-
----
-
-###  1. Creation of New Columns
-
-To improve readability and enable grouped analysis, several additional columns were created:
-
-- **Categorized variables**  
-  (e.g., grouped parental education levels for simplified comparisons)
-
-- **Grouped performance indicators**  
-  helping compare student performance across different demographic and contextual factors
-
-- **Text-standardized columns**  
-  ensuring consistency across all textual fields in the dataset
-
----
-
-###  2. Creation of DAX Measures
-
-Multiple DAX measures were created to compute key metrics used throughout the report:
-
+### 2. Creation of DAX Measures
 - **Average Math Score**  
 - **Average Reading Score**  
 - **Average Writing Score**  
@@ -112,29 +56,52 @@ Multiple DAX measures were created to compute key metrics used throughout the re
 - **Total Students**  
 - **Pass Rate**
 
-These measures support dynamic and accurate calculations across all report pages and enable interactive filtering in Power BI.
+These measures allow **dynamic and accurate calculations** across all report pages.
+
+### 3. Pass/Fail Definition
+- **Pass:** Overall Average Score ≥ 60  
+- **Fail:** Overall Average Score < 60  
+
+Used to create **clear performance categories** and compute pass rates across groups.
 
 ---
 
-###  3. Definition of Pass/Fail Criteria
-
-For the purpose of this analysis:
-
-- A student is considered **Pass** if the **Overall Average Score ≥ 60**  
-- A student is considered **Fail** if the **Overall Average Score < 60**
-
-This threshold allowed the creation of clear performance categories and made it possible to compute the pass rate across different groups such as:
-
-- gender  
-- race/ethnicity  
-- lunch status  
-- test preparation course  
-- parental education level  
-- and other demographic factors
+## Navigation and Filters
+- **Slicers:** Gender, Race, Test Preparation, Lunch  
+- Slicers are **placed on Page 2** and **synchronized** across relevant pages for consistent subgroup analysis.  
+- Filters can be applied selectively depending on the analytical context.
 
 ---
 
+## Skills Used
+- **Power BI Desktop** – report building and data visualization  
+- **DAX** – calculation of measures and pass rates  
+- **Data Cleaning & Preparation** – column creation, text standardization  
+- **Data Analysis** – interpretation of distributions, quartiles, and factor influence  
+- **Kaggle Dataset Handling** – working with CSV datasets  
 
-## Justification for Slicer Placement and Synchronization
-- Slicers placed on **Page 2** to avoid clutter  
-- Synchronized across all pages to ensure **data consistency** and facilitate exploration of student subgroups
+---
+
+## Dataset
+- **Source:** [Kaggle – Students Academic Performance Dataset](https://www.kaggle.com/datasets)  
+- **Format:** CSV  
+- **Rows:** 1000  
+- **Columns:** Performance and demographic variables
+
+---
+
+## How to Use
+1. Open the **Power BI report**.  
+2. Explore general student characteristics on Page 1.  
+3. Filter by Gender, Race, Test Preparation, or Lunch using slicers on Page 2.  
+4. Examine factors influencing scores on Page 3.  
+5. Review subject-level performance in Page 4.  
+
+
+
+
+
+ 
+
+
+
